@@ -1,0 +1,151 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, #007aff, #2a86ff, #4da1ff, #72baff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Form Container */
+.form-container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: popIn 1s ease;
+    overflow: hidden;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #007aff;
+}
+
+/* Input Fields */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #4da1ff;
+    border-radius: 10px;
+    background: #eef6ff;
+    font-size: 1rem;
+    color: #444;
+    transition: 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #007aff;
+    box-shadow: 0 4px 10px rgba(0, 122, 255, 0.5);
+    outline: none;
+}
+
+/* Radio Group */
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.radio-group label {
+    font-size: 1rem;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+.radio-group label:hover {
+    color: #007aff;
+    transform: scale(1.1);
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #4da1ff;
+    transform: scale(1.4);
+}
+
+/* Submit Button */
+button {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #007aff, #4da1ff);
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #006be8, #007aff);
+    box-shadow: 0 6px 15px rgba(0, 122, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input[type="text"], button {
+        font-size: 0.9rem;
+    }
+
+    .checkbox-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Keyframes */
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.flashed-messages {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.flashed-messages .flash {
+    padding: 10px;
+    background-color: #28a745; /* Green background for success */
+    color: white;
+    border-radius: 5px;
+}
