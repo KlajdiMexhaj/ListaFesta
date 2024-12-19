@@ -10,35 +10,34 @@
     <div class="form-container">
         <h2>Konfirmoni Pjesëmarrjen</h2>
 
-                <!-- Display flash message -->
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <ul class="flashed-messages">
-                        {% for category, message in messages %}
-                            <li class="flash {{ category }}">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-
+        <!-- Display flash message -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashed-messages">
+                {% for category, message in messages %}
+                    <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
 
         <form method="POST">
             <div class="form-group">
                 <label for="emer">Emër:</label>
-                <input type="text" id="emer" name="emer" placeholder="Shkruani emrin tuaj" required>
+                <input type="text" id="emer" name="emer" placeholder="Shkruani emrin tuaj" value="{{ emer }}" required>
             </div>
             <div class="form-group">
                 <label for="mbiemer">Mbiemër:</label>
-                <input type="text" id="mbiemer" name="mbiemer" placeholder="Shkruani mbiemrin tuaj" required>
+                <input type="text" id="mbiemer" name="mbiemer" placeholder="Shkruani mbiemrin tuaj" value="{{ mbiemer }}" required>
             </div>
             <div class="form-group">
                 <p>Ju lutem konfirmoni pjesëmarrjen:</p>
                 <div class="radio-group">
                     <label>
-                        <input type="radio" name="confirmation" value="po" required> Po
+                        <input type="radio" name="confirmation" value="po" {% if confirmation == 'po' %}checked{% endif %} required> Po
                     </label>
                     <label>
-                        <input type="radio" name="confirmation" value="jo" required> Jo
+                        <input type="radio" name="confirmation" value="jo" {% if confirmation == 'jo' %}checked{% endif %} required> Jo
                     </label>
                 </div>
             </div>

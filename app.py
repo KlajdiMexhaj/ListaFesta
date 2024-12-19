@@ -45,6 +45,11 @@ admin.add_view(MyModelView(User, db.session))
 # Define the route for the form
 @app.route('/', methods=['GET', 'POST'])
 def form():
+    # Get the parameters from the URL query string
+    emer = request.args.get('emer', '')  # Default to empty string if not provided
+    mbiemer = request.args.get('mbiemer', '')  # Default to empty string if not provided
+    confirmation = request.args.get('confirmation', '')  # Default to empty if not provided
+
     if request.method == 'POST':
         emer = request.form['emer']
         mbiemer = request.form['mbiemer']
@@ -67,7 +72,7 @@ def form():
 
         return redirect(url_for('form'))  # Redirect back to the form to show the message
 
-    return render_template('index.html')  # Change here to use 'index.html'
+    return render_template('index.html', emer=emer, mbiemer=mbiemer, confirmation=confirmation)
 
 # Route to export data to CSV
 @app.route('/export_csv')
