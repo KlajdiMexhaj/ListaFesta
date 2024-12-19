@@ -32,7 +32,7 @@ with app.app_context():
 class MyModelView(ModelView):
     # Allow the user to edit and delete records
     can_edit = False
-    can_delete = False
+    can_delete = True
     # Optionally, specify which columns should be displayed in the list view
     column_list = ('emer', 'mbiemer', 'confirmation')
     # Allow search by specific columns (optional)
