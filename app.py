@@ -15,6 +15,14 @@ class User(db.Model):
     emer = db.Column(db.String(100), nullable=False)
     mbiemer = db.Column(db.String(100), nullable=False)
     confirmation = db.Column(db.String(10), nullable=False)
+    
+    
+    # Ensure name and surname are stored in lowercase
+    def __init__(self, emer, mbiemer, confirmation):
+        self.emer = emer.lower()
+        self.mbiemer = mbiemer.lower()
+        self.confirmation = confirmation
+
 
 # Create the database
 with app.app_context():
@@ -43,7 +51,7 @@ def form():
         confirmation = request.form['confirmation']
 
         # Check if the name or surname already exists in the database
-        existing_user = User.query.filter((User.emer == emer) | (User.mbiemer == mbiemer)).first()
+        existing_user = User.query.filter_by(emer=emer.lower(), mbiemer=mbiemer.lower()).first()
 
         if existing_user:
             flash('Ky emër ose mbiemër janë regjistruar më parë. Ju lutem mos e dërgoni përsëri.', 'warning')
